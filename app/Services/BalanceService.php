@@ -34,7 +34,6 @@ class BalanceService
                 'comment' => $comment,
             ]);
 
-
             return $user->refresh();
         });
     }

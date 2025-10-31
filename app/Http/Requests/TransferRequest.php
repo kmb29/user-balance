@@ -8,7 +8,6 @@ class TransferRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        // В тестовом задании аутентификации нет — разрешаем все запросы.
         return true;
     }
 
@@ -22,12 +21,9 @@ class TransferRequest extends FormRequest
         ];
     }
 
-
-
     protected function prepareForValidation(): void
     {
         if ($this->has('amount')) {
-            // возможно приходят строки — приведение к десятичному формату (строка).
             $this->merge([
                 'amount' => is_numeric($this->input('amount')) ? (string) round((float) $this->input('amount'), 2) : $this->input('amount'),
             ]);
