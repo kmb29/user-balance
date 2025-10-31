@@ -1,24 +1,38 @@
 Test project By: Gregory Petrov
 
-To run this project in Docker: docker-compose -f compose.yaml up -d
+To run this project in Docker:
 
-Perform migrations - it's mandatory: docker-compose exec laravel.test php artisan migrate
+**composer install**
+
+**docker-compose -f compose.yaml up -d**
+
+Perform migrations:
+
+**docker-compose exec laravel.test php artisan migrate**
 
 Then you can test the API in Postman.
 
-Adding funds to the user: POST /api/deposit { "user_id": 1, "amount": 500.00, "comment": "Thank you!" }
+**Adding funds to the user:**
 
-Withdrawing funds: POST /api/withdraw { "user_id": 1, "amount": 200.00, "comment": "Buying smth" }
+POST /api/deposit { "user_id": 1, "amount": 500.00, "comment": "Thank you!" }
+
+**Withdrawing funds:**
+
+POST /api/withdraw { "user_id": 1, "amount": 200.00, "comment": "Buying smth" }
 
 (Balance cannot be negative)
 
-Transferring funds between users POST /api/transfer { "from_user_id": 1, "to_user_id": 2, "amount": 150.00, "comment": "Happy birthday!" }
+**Transferring funds between users:**
 
-Getting balance GET /api/balance/{user_id} { "user_id": 1, "balance": 350.00 }
+POST /api/transfer { "from_user_id": 1, "to_user_id": 2, "amount": 150.00, "comment": "Happy birthday!" }
 
-Routes except /api/... are not handled by api application.
+**Getting balance:**
 
-This requirements are considered:
+GET /api/balance/{user_id} { "user_id": 1, "balance": 350.00 }
+
+**Routes except /api/... are not handled by api application.**
+
+**This requirements are considered:**
 
 • The project must be implemented in PHP 8+.
 
